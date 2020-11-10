@@ -7,5 +7,5 @@ public class Constants {
 
     public static String password = "DefaultLoginPasswordDoNotChange!";
 
-
+    public static String newKey = "REDACTED";
 }
