@@ -18,7 +18,6 @@ public class CanariesController {
     @Autowired
     CanaryCounter canaryCounter;
 
-//https://canarytokens.org/history?token=s7cfbdakys13246ewd8ivuvku&auth=REDACTED
     @PostMapping(path = "/canaries/tokencallback", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> processCanaryToken(@RequestBody CanaryToken canaryToken) {
         try {
@@ -39,7 +38,6 @@ public class CanariesController {
         return new ResponseEntity<>("all good", HttpStatus.ACCEPTED);
     }
 
-//http://canarytokens.com/terms/about/y0all60b627gzp19ahqh7rl6j/post.jsp
     @PostMapping(path = "/canaries/tokencallbackdebug", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> processCanaryTokendebug(@RequestBody String canarytokenContents) {
         canaryCounter.upCallBackCounter();
