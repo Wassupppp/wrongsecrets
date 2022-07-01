@@ -9,14 +9,14 @@ import org.owasp.wrongsecrets.ScoreCard;
 import org.owasp.wrongsecrets.challenges.Spoiler;
 
 @ExtendWith(MockitoExtension.class)
-class Challenge20Test {
+class Challenge21Test {
 
     @Mock
     private ScoreCard scoreCard;
 
     @Test
     void spoilerShouldNotCrash() {
-        var challenge = new Challenge20(scoreCard);
+        var challenge = new Challenge21(scoreCard);
 
         Assertions.assertThat(challenge.spoiler()).isNotEqualTo(new Spoiler(BinaryExecutionHelper.ERROR_EXECUTION));
         Assertions.assertThat(challenge.answerCorrect(challenge.spoiler().solution())).isTrue();
