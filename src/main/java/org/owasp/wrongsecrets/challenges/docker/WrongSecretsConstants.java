@@ -4,7 +4,7 @@ import lombok.experimental.UtilityClass;
 
 /** used for Challenges their secrets. */
 @UtilityClass
-public class Constants {
+public class WrongSecretsConstants {
 
   public static final String password = "DefaultLoginPasswordDoNotChange!";
   public static final String newKey = "REDACTED";
