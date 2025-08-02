@@ -10,13 +10,13 @@ class Challenge57Test {
   @Test
   void spoilerShouldReturnCorrectAnswer() {
     var challenge = new Challenge57();
-    assertThat(challenge.spoiler()).isEqualTo(new Spoiler("SuperSecretDB2024!"));
+    assertThat(challenge.spoiler()).isEqualTo(new Spoiler("REDACTED"));
   }
 
   @Test
   void answerCorrectShouldReturnTrueForCorrectAnswer() {
     var challenge = new Challenge57();
-    assertThat(challenge.answerCorrect("SuperSecretDB2024!")).isTrue();
+    assertThat(challenge.answerCorrect("REDACTED")).isTrue();
   }
 
   @Test
@@ -30,18 +30,19 @@ class Challenge57Test {
   @Test
   void answerCorrectShouldTrimWhitespace() {
     var challenge = new Challenge57();
-    assertThat(challenge.answerCorrect("  SuperSecretDB2024!  ")).isTrue();
+    assertThat(challenge.answerCorrect("  REDACTED  ")).isTrue();
   }
 
   @Test
-  void simulateDatabaseConnectionErrorShouldExposeConnectionString() {
+  void getLLMJavaScriptCodeShouldExposeAPIKey() {
     var challenge = new Challenge57();
-    String errorMessage = challenge.simulateDatabaseConnectionError();
+    String jsCode = challenge.getLLMJavaScriptCode();
 
-    // Verify that the error message contains the exposed connection string
-    assertThat(errorMessage).contains("jdbc:postgresql://db.example.com:5432/userdb");
-    assertThat(errorMessage).contains("user=dbadmin");
-    assertThat(errorMessage).contains("password=SuperSecretDB2024!");
-    assertThat(errorMessage).contains("Database connection failed");
+    // Verify that the JavaScript code contains the exposed API key
+    assertThat(jsCode).contains("REDACTED");
+    assertThat(jsCode).contains("this.apiKey = ");
+    assertThat(jsCode).contains("console.log");
+    assertThat(jsCode).contains("Authorization");
+    assertThat(jsCode).contains("Bearer");
   }
 }
