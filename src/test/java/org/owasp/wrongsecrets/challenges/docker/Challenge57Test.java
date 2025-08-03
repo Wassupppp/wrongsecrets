@@ -10,13 +10,18 @@ class Challenge57Test {
   @Test
   void spoilerShouldReturnCorrectAnswer() {
     var challenge = new Challenge57();
-    assertThat(challenge.spoiler()).isEqualTo(new Spoiler("REDACTED"));
+    assertThat(challenge.spoiler())
+        .isEqualTo(
+            new Spoiler("REDACTED"));
   }
 
   @Test
   void answerCorrectShouldReturnTrueForCorrectAnswer() {
     var challenge = new Challenge57();
-    assertThat(challenge.answerCorrect("REDACTED")).isTrue();
+    assertThat(
+            challenge.answerCorrect(
+                "REDACTED"))
+        .isTrue();
   }
 
   @Test
@@ -30,7 +35,10 @@ class Challenge57Test {
   @Test
   void answerCorrectShouldTrimWhitespace() {
     var challenge = new Challenge57();
-    assertThat(challenge.answerCorrect("  REDACTED  ")).isTrue();
+    assertThat(
+            challenge.answerCorrect(
+                "  REDACTED  "))
+        .isTrue();
   }
 
   @Test
@@ -39,7 +47,8 @@ class Challenge57Test {
     String jsCode = challenge.getLLMJavaScriptCode();
 
     // Verify that the JavaScript code contains the exposed API key
-    assertThat(jsCode).contains("REDACTED");
+    assertThat(jsCode)
+        .contains("REDACTED");
     assertThat(jsCode).contains("this.apiKey = ");
     assertThat(jsCode).contains("console.log");
     assertThat(jsCode).contains("Authorization");
