@@ -10,7 +10,8 @@ class Challenge59Test {
   @Test
   void answerCorrectWithValidWebhookUrl() {
     // Create a properly obfuscated Slack webhook URL
-    String originalUrl = "REDACTED";
+    String originalUrl =
+        "REDACTED";
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -20,7 +21,8 @@ class Challenge59Test {
 
   @Test
   void answerIncorrectWithWrongUrl() {
-    String originalUrl = "REDACTED";
+    String originalUrl =
+        "REDACTED";
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -30,7 +32,8 @@ class Challenge59Test {
 
   @Test
   void answerIncorrectWithEmptyString() {
-    String originalUrl = "REDACTED";
+    String originalUrl =
+        "REDACTED";
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -40,7 +43,8 @@ class Challenge59Test {
 
   @Test
   void getSlackWebhookUrlReturnsDeobfuscatedUrl() {
-    String originalUrl = "REDACTED";
+    String originalUrl =
+        "REDACTED";
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -52,9 +56,10 @@ class Challenge59Test {
   void handlesInvalidObfuscatedUrl() {
     // Test with invalid base64 input
     Challenge59 challenge = new Challenge59("invalid-base64-url");
-    
+
     // Should return the default URL when deobfuscation fails
-    String defaultUrl = "REDACTED";
+    String defaultUrl =
+        "REDACTED";
     assertEquals(defaultUrl, challenge.getAnswer());
   }
 
@@ -62,7 +67,8 @@ class Challenge59Test {
   void answerCorrectWithDefaultUrl() {
     // Test with invalid input that falls back to default
     Challenge59 challenge = new Challenge59("invalid-input");
-    String defaultUrl = "REDACTED";
+    String defaultUrl =
+        "REDACTED";
     assertTrue(challenge.answerCorrect(defaultUrl));
   }
 }
