@@ -11,11 +11,13 @@ WORKDIR /application
 
 ARG argBasedPassword="default"
 ARG spring_profile=""
+ARG challenge59_webhook_url="REDACTED_BASE64_WEBHOOK"
 ENV SPRING_PROFILES_ACTIVE=$spring_profile
 ENV ARG_BASED_PASSWORD=$argBasedPassword
 ENV APP_VERSION=$argBasedVersion
 ENV DOCKER_ENV_PASSWORD="This is it"
 ENV AZURE_KEY_VAULT_ENABLED=false
+ENV CHALLENGE59_SLACK_WEBHOOK_URL=$challenge59_webhook_url
 ENV SPRINGDOC_UI=false
 ENV SPRINGDOC_DOC=false
 ENV BASTIONHOSTPATH="/home/wrongsecrets/.ssh"
