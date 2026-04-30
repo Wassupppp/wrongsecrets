@@ -60,7 +60,7 @@ class ChallengesControllerCTFModeWithPresetCloudValuesTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("70d75bf845890b2419bd8795c")));
+        .andExpect(content().string(containsString("6a1714fe4ca37b0508f549f593db87c6")));
   }
 
   @Test
@@ -74,7 +74,7 @@ class ChallengesControllerCTFModeWithPresetCloudValuesTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("176e937a2cafea3b0da3")));
+        .andExpect(content().string(containsString("578a061f2a7659e6962061e98d779abd")));
   }
 
   @Test
