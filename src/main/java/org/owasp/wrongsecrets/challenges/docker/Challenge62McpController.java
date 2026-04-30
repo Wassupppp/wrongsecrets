@@ -171,6 +171,11 @@ public class Challenge62McpController {
             ? (String) arguments.get("document_id")
             : documentId;
 
+    if (!isValidGoogleDriveDocumentId(docId)) {
+      log.warn("Challenge62: Invalid document ID format: {}", sanitizeForLog(docId));
+      return buildErrorResponse(id, -32602, "Invalid document_id format");
+    }
+
     log.info(
         "Challenge62 MCP read_google_drive_document called for document: {}",
         sanitizeForLog(docId));
@@ -350,6 +355,18 @@ public class Challenge62McpController {
       return null;
     }
     return input.replaceAll("[\r\n\u0085\u2028\u2029]", "_");
+  }
+
+  /**
+   * Validates that a Google Drive document ID only contains characters that are valid in a Google
+   * Drive document ID. Document IDs consist of alphanumeric characters, hyphens and underscores.
+   * This prevents SSRF by ensuring the ID cannot be used to escape the expected URL path.
+   *
+   * @param docId the document ID to validate
+   * @return true if the document ID is valid
+   */
+  private boolean isValidGoogleDriveDocumentId(String docId) {
+    return docId != null && !docId.isEmpty() && docId.matches("[a-zA-Z0-9_\\-]+");
   }
 
   private Map<String, Object> buildResponse(Object id, Object result) {
