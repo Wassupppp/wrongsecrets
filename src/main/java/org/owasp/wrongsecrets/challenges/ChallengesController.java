@@ -307,9 +307,9 @@ public class ChallengesController {
   // statement
   private String generateCode(ChallengeDefinition challenge) {
     SecretKeySpec secretKeySpec =
-        new SecretKeySpec(ctfKey.getBytes(StandardCharsets.UTF_8), "HmacSHA1");
+        new SecretKeySpec(ctfKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
     try {
-      Mac mac = Mac.getInstance("HmacSHA1");
+      Mac mac = Mac.getInstance("HmacSHA256");
       mac.init(secretKeySpec);
       byte[] result = mac.doFinal(challenge.name().name().getBytes(StandardCharsets.UTF_8));
       return new String(Hex.encode(result));
