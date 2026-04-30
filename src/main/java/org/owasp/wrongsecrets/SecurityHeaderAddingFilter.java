@@ -17,6 +17,7 @@ public class SecurityHeaderAddingFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
     if (response instanceof HttpServletResponse httpServletResponse) {
+      httpServletResponse.setHeader("Server", "WrongSecrets - Star us!"); // NOSONAR
       httpServletResponse.setHeader("X-Frame-Options", "SAMEORIGIN");
       httpServletResponse.setHeader("X-Content-Type-Options", "nosniff");
       httpServletResponse.setHeader(

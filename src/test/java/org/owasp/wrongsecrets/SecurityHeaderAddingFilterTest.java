@@ -30,7 +30,7 @@ class SecurityHeaderAddingFilterTest {
             "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'"
                 + " 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'self'; object-src"
                 + " 'none'; base-uri 'self'");
-    assertThat(response.getHeader("Server")).isNull();
+    assertThat(response.getHeader("Server")).isEqualTo("WrongSecrets - Star us!");
     verify(chain).doFilter(request, response);
   }
 
