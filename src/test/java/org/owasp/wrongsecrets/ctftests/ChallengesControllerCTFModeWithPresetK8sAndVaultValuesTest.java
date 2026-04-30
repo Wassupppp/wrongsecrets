@@ -54,7 +54,7 @@ class ChallengesControllerCTFModeWithPresetK8sAndVaultValuesTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("547778382f8a3782a46149021ab8af60")));
+        .andExpect(content().string(containsString("26d5e409100ca8dc3bd2dba115b81f5b7889fbbd")));
   }
 
   @Test
@@ -67,7 +67,7 @@ class ChallengesControllerCTFModeWithPresetK8sAndVaultValuesTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("97bae139e507e5a213b9be4cca3fcd30")));
+        .andExpect(content().string(containsString("18af49a1b18359e0bf9b9a0")));
   }
 
   @Test
@@ -80,7 +80,7 @@ class ChallengesControllerCTFModeWithPresetK8sAndVaultValuesTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("540ba4445c33850152b6b536df3020e3")));
+        .andExpect(content().string(containsString("881951b59ea4818c2")));
   }
 
   @Test

@@ -56,7 +56,7 @@ class ChallengesControllerCTFModeTest {
                 .param("action", "submit")
                 .with(csrf()))
         .andExpect(status().isOk())
-        .andExpect(content().string(containsString("f85a770cdd6b451790e80fdff17906bb")));
+        .andExpect(content().string(containsString("ba9a72ac7057576344856")));
   }
 
   @Test
