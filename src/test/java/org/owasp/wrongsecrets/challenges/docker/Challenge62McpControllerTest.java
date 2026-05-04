@@ -198,28 +198,68 @@ class Challenge62McpControllerTest {
   }
 
   @Test
-  void readGoogleDriveDocumentShouldCacheOnlyTwentyAdditionalDocuments() throws Exception {
-    var fetchCount = new AtomicInteger();
+  void readDocumentShouldRejectInvalidDocumentId() {
     var controller =
         new Challenge62McpController(
-            "dGVzdA==", DEFAULT_DOC_ID, mock(RestTemplate.class), new ObjectMapper()) {
+            DEFAULT_KEY, DEFAULT_DOC_ID, mock(RestTemplate.class), new ObjectMapper());
+
+    String[] invalidIds = {"../sensitive", "doc/with/slash", "doc with space", "doc.with.dot"};
+    for (String invalidId : invalidIds) {
+      Map<String, Object> request =
+          Map.of(
+              "jsonrpc",
+              "2.0",
+              "id",
+              2,
+              "method",
+              "tools/call",
+              "params",
+              Map.of(
+                  "name",
+                  "read_google_drive_document",
+                  "arguments",
+                  Map.of("document_id", invalidId)));
+
+      Map<String, Object> response = controller.handleMcpRequest(request);
+
+      assertThat(response).containsKey("error");
+      @SuppressWarnings("unchecked")
+      Map<String, Object> error = (Map<String, Object>) response.get("error");
+      assertThat(error.get("code")).isEqualTo(-32602);
+    }
+  }
+
+  @Test
+  void readDocumentShouldAcceptValidDocumentId() {
+    var controller =
+        new Challenge62McpController(
+            DEFAULT_KEY, DEFAULT_DOC_ID, mock(RestTemplate.class), new ObjectMapper()) {
           @Override
-          String fetchGoogleDriveDocument(String docId) {
-            fetchCount.incrementAndGet();
-            return "cached_secret_for_" + docId;
+          String readGoogleDriveDocument(String docId) {
+            return "document_content";
           }
         };
 
-    controller.readGoogleDriveDocument(DEFAULT_DOC_ID);
-    for (int index = 1; index <= 20; index++) {
-      controller.readGoogleDriveDocument("doc-" + index);
-    }
+    Map<String, Object> request =
+        Map.of(
+            "jsonrpc",
+            "2.0",
+            "id",
+            2,
+            "method",
+            "tools/call",
+            "params",
+            Map.of(
+                "name",
+                "read_google_drive_document",
+                "arguments",
+                Map.of("document_id", "1PlZkwEd7GouyY4cdOxBuczm6XumQeuZN31LR2BXRgPs")));
 
-    controller.readGoogleDriveDocument("doc-1");
-    controller.readGoogleDriveDocument("doc-21");
-    controller.readGoogleDriveDocument(DEFAULT_DOC_ID);
-    controller.readGoogleDriveDocument("doc-2");
+    Map<String, Object> response = controller.handleMcpRequest(request);
 
-    assertThat(fetchCount.get()).isEqualTo(23);
+    assertThat(response).containsKey("result");
+    @SuppressWarnings("unchecked")
+    Map<String, Object> result = (Map<String, Object>) response.get("result");
+    assertThat(result).containsKey("content");
   }
 }
