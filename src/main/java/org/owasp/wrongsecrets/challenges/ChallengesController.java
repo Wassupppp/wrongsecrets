@@ -306,7 +306,8 @@ public class ChallengesController {
   // TODO extract this to the challenge definition @see ChallengeAPIController with nested if
   // statement
   private String generateCode(ChallengeDefinition challenge) {
-    // codeql[java/weak-cryptographic-algorithm] Intentional HmacSHA1 for CTF code generation - this is educational/functional, not security-critical
+    // codeql[java/weak-cryptographic-algorithm] Intentional HmacSHA1 for CTF code generation - this
+    // is educational/functional, not security-critical
     SecretKeySpec secretKeySpec =
         new SecretKeySpec(ctfKey.getBytes(StandardCharsets.UTF_8), "HmacSHA1");
     try {
