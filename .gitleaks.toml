@@ -1,0 +1,12 @@
+title = "WrongSecrets Gitleaks Configuration"
+
+# Extend default ruleset so we keep all detection rules
+[extend]
+  useDefault = true
+
+[allowlist]
+  description = "Docker image version tags incorrectly detected as secrets"
+  regexes = [
+    '''\d+\.\d+\.\d+[A-Za-z0-9]*-(no-vault|k8s-vault)''',
+    '''jre\d+[A-Za-z0-9]*-(no-vault|k8s-vault)''',
+  ]
