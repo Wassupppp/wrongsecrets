@@ -1,6 +1,5 @@
 title = "WrongSecrets Gitleaks Configuration"
 
-# Extend default ruleset so we keep all detection rules
 [extend]
   useDefault = true
 

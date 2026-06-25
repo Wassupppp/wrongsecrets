@@ -19,7 +19,7 @@ The webhook URL has been obfuscated using a common technique:
 
 - Slack webhook URLs follow the pattern: `https://hooks.slack.com/services/...`
 - They contain three path segments after `/services/`
-- Example format: `REDACTED`
+- Example format: `https://hooks.slack.com/services/<TEAM>/<CHANNEL>/<TOKEN>`
 - The URL segments represent: Team ID / Channel ID / Secret Token
 
 ==== Tools You Can Use

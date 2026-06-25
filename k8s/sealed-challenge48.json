@@ -15,7 +15,7 @@
       }
     },
     "encryptedData": {
-      "secret": "REDACTED"
+      "secret": "see-vault-at-secret/app/challenge-secrets"
     }
   }
 }

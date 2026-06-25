@@ -7,7 +7,7 @@
 set -e
 
 # Default webhook URL if none provided
-DEFAULT_WEBHOOK="REDACTED"
+DEFAULT_WEBHOOK="" # gitleaks:allow
 
 # Function to validate webhook URL format
 validate_webhook_url() {

@@ -16,7 +16,7 @@ ECB-AES128
     f69f2445df4f9b17ad2b417be66c3710
 
   key:
-    REDACTED
+    00000000000000000000000000000000
 
   resulting cipher
     3ad77bb40d7a3660a89ecaf32466ef97

@@ -5,7 +5,7 @@ You can solve this challenge by the following steps:
 
     Key                  Value
     ---                  -----
-    token                REDACTED
+    token                <see vault at secret/vault/tokens>
     token_accessor       HEr9RYa3OcZNDOHeFRXIMYCV
     token_duration       ∞
     token_renewable      false

@@ -11,7 +11,7 @@ class Challenge59Test {
   void answerCorrectWithValidWebhookUrl() {
     // Create a properly obfuscated Slack webhook URL
     String originalUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_TEST_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -22,7 +22,7 @@ class Challenge59Test {
   @Test
   void answerIncorrectWithWrongUrl() {
     String originalUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_TEST_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -33,7 +33,7 @@ class Challenge59Test {
   @Test
   void answerIncorrectWithEmptyString() {
     String originalUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_TEST_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -44,7 +44,7 @@ class Challenge59Test {
   @Test
   void getSlackWebhookUrlReturnsDeobfuscatedUrl() {
     String originalUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_TEST_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     String firstEncode = Base64.getEncoder().encodeToString(originalUrl.getBytes());
     String doubleEncoded = Base64.getEncoder().encodeToString(firstEncode.getBytes());
 
@@ -59,7 +59,7 @@ class Challenge59Test {
 
     // Should return the default URL when deobfuscation fails
     String defaultUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_DEFAULT_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     assertEquals(defaultUrl, challenge.getAnswer());
   }
 
@@ -68,7 +68,7 @@ class Challenge59Test {
     // Test with invalid input that falls back to default
     Challenge59 challenge = new Challenge59("invalid-input");
     String defaultUrl =
-        "REDACTED";
+        System.getenv().getOrDefault("CHALLENGE59_DEFAULT_WEBHOOK", "https://hooks.slack.com/services/TEST/TEST/TEST");
     assertTrue(challenge.answerCorrect(defaultUrl));
   }
 }

@@ -7,5 +7,5 @@ import lombok.experimental.UtilityClass;
 public class WrongSecretsConstants {
 
   public static final String password = "DefaultLoginPasswordDoNotChange!";
-  public static final String newKey = "REDACTED";
+  public static final String newKey = System.getenv().getOrDefault("WRONGSECRETS_ENCRYPTION_KEY", "");
 }

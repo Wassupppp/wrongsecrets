@@ -29,7 +29,7 @@ public class Challenge54 extends FixedAnswerChallenge {
           "Though using AES CBC is a bad idea now that we have GCM-SIV, we want to use a simple"
               + " example")
   private String decryptAES() {
-    final String encryptedSecret = "REDACTED";
+    final String encryptedSecret = System.getenv().getOrDefault("CHALLENGE54_SECRET", "");
     final String passphrase = "key_to_decrypt_the_secret";
     try {
 

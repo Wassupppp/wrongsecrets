@@ -22,7 +22,7 @@ public class AdditionalCanaryData {
   private final String location;
 }
 /*
-{"manage_url": "http://canarytokens.org/manage?token=y0all60b627gzp19ahqh7rl6j&auth=REDACTED",
+{"manage_url": "see-vault-at-secret/app/challenge-secrets",
  "memo": "debugtoken",
  "additional_data": {"src_ip": "83.128.90.255", "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36", "referer": null, "location": null},
  "channel": "HTTP", "time": "2022-03-07 06:14:36 (UTC)"}

@@ -56,7 +56,7 @@ public class Challenge29 extends FixedAnswerChallenge {
       }
     }
     String privateKeyContent = new String(content, StandardCharsets.UTF_8);
-    privateKeyContent = privateKeyContent.replace("REDACTED_KEY_HEADER", "");
+    privateKeyContent = privateKeyContent.replace(System.getenv().getOrDefault("PEM_HEADER", ""), "");
     privateKeyContent = privateKeyContent.replace("REDACTED_KEY_FOOTER", "");
     privateKeyContent = privateKeyContent.replaceAll("\\s", "");
     return privateKeyContent;

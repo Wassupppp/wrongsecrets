@@ -16,7 +16,7 @@ class Challenge13Test {
   void spoilerShouldRevealAnswer() {
     var challenge =
         new Challenge13(
-            "This is not the secret", "REDACTED");
+            "This is not the secret", System.getenv().getOrDefault("CHALLENGE13_TEST_SECRET", ""));
 
     assertThat(challenge.spoiler())
         .isEqualTo(
@@ -31,7 +31,7 @@ class Challenge13Test {
   void rightAnswerShouldSolveChallenge() {
     var challenge =
         new Challenge13(
-            "This is not the secret", "REDACTED");
+            "This is not the secret", System.getenv().getOrDefault("CHALLENGE13_TEST_SECRET", ""));
 
     assertThat(
             challenge.answerCorrect(
@@ -45,7 +45,7 @@ class Challenge13Test {
   void incorrectAnswerShouldNotSolveChallenge() {
     var challenge =
         new Challenge13(
-            "This is not the secret", "REDACTED");
+            "This is not the secret", System.getenv().getOrDefault("CHALLENGE13_TEST_SECRET", ""));
 
     assertThat(challenge.answerCorrect("wrong answer")).isFalse();
   }

@@ -11,7 +11,7 @@ WORKDIR /application
 
 ARG argBasedPassword="default"
 ARG spring_profile=""
-ARG challenge59_webhook_url="REDACTED_BASE64_WEBHOOK"
+ARG challenge59_webhook_url=""
 ENV SPRING_PROFILES_ACTIVE=$spring_profile
 ENV ARG_BASED_PASSWORD=$argBasedPassword
 ENV APP_VERSION=$argBasedVersion
